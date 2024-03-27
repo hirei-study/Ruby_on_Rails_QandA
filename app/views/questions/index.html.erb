@@ -1,3 +1,41 @@
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
+<div class="flex w-100vh justify-center items-center pt-4 mb-4">
+    <h1 class="text-4xl font-bold">All Questions</h1>
+</div>
+
+<div class="flex justify-center items-center pt-4 mt-4">
+    <%= link_to 'create', new_question_path, class: "font-medium text-xl bg-blue-500 text-white dark:text-white hover:underline hover:bg-blue-700 rounded-md p-2"  %>
+</div>
+
+<div class="flex w-100vh justify-center items-center pt-4 mb-4 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">ID</th>
+                <th scope="col" class="px-6 py-3">Title</th>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Content</th>
+                <th scope="col" class="px-6 py-3">CreatedAt</th>
+                <th scope="col" class="px-6 py-3">UpdatedAt</th>
+                <th scope="col" class="px-6 py-3">Show</th>
+                <th scope="col" class="px-6 py-3">Edit</th>
+                <th scope="col" class="px-6 py-3">Delete</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <% @questions.map do |question| %>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4"><%= question.id %></td>
+                <td class="px-6 py-4"><%= question.title %></td>
+                <td class="px-6 py-4"><%= question.name %></td>
+                <td class="px-6 py-4"><%= question.content %></td>
+                <td class="px-6 py-4"><%= l question.created_at %></td>
+                <td class="px-6 py-4"><%= l question.updated_at %></td>
+                <td class="px-6 py-4"><%= link_to 'show', question_path(question), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline"  %></td>
+                <td class="px-6 py-4"><%= link_to 'edit', edit_question_path(question), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline"  %></td>
+                <td class="px-6 py-4"><%= link_to 'destroy', question_path(question), data: {turbo_method: 'delete', turbo_confirm: 'Are you sure?'}, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline"  %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

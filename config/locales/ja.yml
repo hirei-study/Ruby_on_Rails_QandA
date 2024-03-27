@@ -1,0 +1,12 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+  activerecord:
+    models:
+      question: 質問集
+    attributes:
+      question:
+        name: 名前
+        title: タイトル
+        content: 本文
